@@ -1,0 +1,96 @@
+{
+  "results": [
+    {
+      "route": "/company",
+      "h1": 1,
+      "title": "Company | IPM Simplified",
+      "cspInlineScriptsCovered": true
+    },
+    {
+      "route": "/contact",
+      "h1": 1,
+      "title": "Talk to us | IPM Simplified",
+      "cspInlineScriptsCovered": true
+    },
+    {
+      "route": "/coverage",
+      "h1": 1,
+      "title": "Programs and cycles | IPM Simplified",
+      "cspInlineScriptsCovered": true
+    },
+    {
+      "route": "/demo",
+      "h1": 1,
+      "title": "Schedule a demo | IPM Simplified",
+      "cspInlineScriptsCovered": true
+    },
+    {
+      "route": "/how-they-fit",
+      "h1": 1,
+      "title": "How they fit | IPM Simplified",
+      "cspInlineScriptsCovered": true
+    },
+    {
+      "route": "/",
+      "h1": 1,
+      "title": "One building. Three records.",
+      "cspInlineScriptsCovered": true
+    },
+    {
+      "route": "/privacy",
+      "h1": 1,
+      "title": "Privacy | IPM Simplified",
+      "cspInlineScriptsCovered": true
+    },
+    {
+      "route": "/products/inspection",
+      "h1": 1,
+      "title": "InspectionSimplified | IPM Simplified",
+      "cspInlineScriptsCovered": true
+    },
+    {
+      "route": "/products/maintenance",
+      "h1": 1,
+      "title": "MaintenanceSimplified | IPM Simplified",
+      "cspInlineScriptsCovered": true
+    },
+    {
+      "route": "/products/permit",
+      "h1": 1,
+      "title": "PermitSimplified | IPM Simplified",
+      "cspInlineScriptsCovered": true
+    },
+    {
+      "route": "/products",
+      "h1": 1,
+      "title": "The three products | IPM Simplified",
+      "cspInlineScriptsCovered": true
+    },
+    {
+      "route": "/styleguide",
+      "h1": 1,
+      "title": "Styleguide | IPM Simplified",
+      "cspInlineScriptsCovered": true
+    },
+    {
+      "route": "/terms",
+      "h1": 1,
+      "title": "Website terms | IPM Simplified",
+      "cspInlineScriptsCovered": true
+    },
+    {
+      "route": "/who-we-serve",
+      "h1": 1,
+      "title": "Who we serve | IPM Simplified",
+      "cspInlineScriptsCovered": true
+    },
+    {
+      "route": "/_not-found",
+      "h1": 1,
+      "title": "IPM Simplified — One building. Three records.",
+      "cspInlineScriptsCovered": true
+    }
+  ],
+  "photoBudgetPass": true,
+  "failures": []
+}

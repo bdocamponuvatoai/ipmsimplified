@@ -1,0 +1,42 @@
+[
+  {
+    "file": "public/photos/a1-jurisdictions.avif",
+    "bytes": 101802,
+    "quality": 65
+  },
+  {
+    "file": "public/photos/a1-jurisdictions.webp",
+    "bytes": 85724,
+    "quality": 65
+  },
+  {
+    "file": "public/photos/a2-contractors.avif",
+    "bytes": 105222,
+    "quality": 55
+  },
+  {
+    "file": "public/photos/a2-contractors.webp",
+    "bytes": 110038,
+    "quality": 65
+  },
+  {
+    "file": "public/photos/a3-owners.avif",
+    "bytes": 116149,
+    "quality": 65
+  },
+  {
+    "file": "public/photos/a3-owners.webp",
+    "bytes": 96064,
+    "quality": 65
+  },
+  {
+    "file": "public/photos/ipm-systems-hero.avif",
+    "bytes": 78427,
+    "quality": 52
+  },
+  {
+    "file": "public/photos/ipm-systems-hero.webp",
+    "bytes": 109570,
+    "quality": 68
+  }
+]

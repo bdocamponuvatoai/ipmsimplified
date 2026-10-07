@@ -1,0 +1,16 @@
+export const routes = [
+  ["/", "One building. Three records."],
+  ["/products", "Three independent products."],
+  ["/products/inspection", "The jurisdiction’s register of what is due."],
+  ["/products/permit", "Plan review and permitting."],
+  ["/products/maintenance", "The record owners and contractors keep."],
+  ["/coverage", "Programs and cycles."],
+  ["/who-we-serve", "Different responsibilities. One building."],
+  ["/how-they-fit", "The same object underneath."],
+  ["/company", "Built around the record."],
+  ["/contact", "Talk to us."],
+  ["/demo", "See the record from your side."],
+  ["/privacy", "Privacy."],
+  ["/terms", "Terms."],
+  ["/styleguide", "The record, by design."],
+] as const;

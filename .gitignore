@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+.env*
+!.env.example
+*.tsbuildinfo
+*.log
+playwright-report/
+test-results/
+.lighthouseci/
+lighthouse-report/
+.vercel/
+coverage/
+tmp-*.png
