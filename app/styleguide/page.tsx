@@ -9,6 +9,7 @@ export const metadata = meta(
   "Styleguide",
   "The IPM Simplified palette, type system, record lines, interface states and motion tokens.",
   "/styleguide",
+  { index: false },
 );
 export default function Page() {
   return (
