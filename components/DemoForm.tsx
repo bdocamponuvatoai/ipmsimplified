@@ -49,9 +49,10 @@ export function DemoForm() {
           const next = flattenErrors(validation.error).fieldErrors;
           setClientErrors(next);
           const name = Object.keys(next)[0];
-          (
-            event.currentTarget.elements.namedItem(name) as HTMLElement | null
-          )?.focus?.();
+          const field = event.currentTarget.elements.namedItem(name);
+          // Checkbox groups resolve to a RadioNodeList, which has no focus().
+          const target = field instanceof RadioNodeList ? field[0] : field;
+          (target as HTMLElement | null)?.focus?.();
         } else setClientErrors({});
       }}
     >
@@ -93,7 +94,10 @@ export function DemoForm() {
       ))}
       <div className="form-field">
         <label htmlFor="role">Role</label>
+        {/* React does not re-apply a changed defaultValue to a select after a
+            form action resets the form, so remount it to restore the choice. */}
         <select
+          key={state.values?.role || "none"}
           id="role"
           name="role"
           required

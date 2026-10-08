@@ -45,7 +45,7 @@ npm run test:e2e
 npm audit --omit=dev
 ```
 
-`npm run check` runs ESLint, TypeScript, content/schema tests, the hardened production build, static HTML/CSP checks and the bundle report. The build intentionally runs Next.js more than once to derive and verify hashes for inline framework scripts. Deploy with `npm run build`, not `next build` directly.
+`npm run check` runs ESLint, TypeScript, content/schema tests, the hardened production build, static HTML/CSP checks and the bundle report. The build intentionally runs Next.js more than once to derive and verify hashes for inline framework scripts. Deploy with `npm run build`, not `next build` directly. `npm start` refuses to serve a build whose inline scripts are not covered by the CSP hashes, since the site would render but never hydrate.
 
 The browser suite checks every public route for a single H1, runtime errors, WCAG axe violations and horizontal overflow at six viewport widths. It also covers mobile navigation, keyboard tabs, form validation, no-JavaScript rendering and reduced motion.
 

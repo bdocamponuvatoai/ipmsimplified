@@ -10,5 +10,6 @@ test-results/
 .lighthouseci/
 lighthouse-report/
 .vercel/
-coverage/
+/coverage/
 tmp-*.png
+AGENTS.md
