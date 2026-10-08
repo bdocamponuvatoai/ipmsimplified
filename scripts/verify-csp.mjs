@@ -10,15 +10,15 @@ try {
 }
 
 const stale = [];
-try {
-  for await (const { route, html } of pages()) {
-    if (route === "/_global-error") continue;
-    const allowed = manifest[route] || [];
-    if (!inlineScripts(html).every((s) => allowed.includes(hashScript(s))))
-      stale.push(route);
-  }
-} catch (error) {
-  if (error.code !== "ENOENT") throw error;
+let checked = 0;
+for await (const { route, html } of pages()) {
+  if (route === "/_global-error") continue;
+  checked++;
+  const allowed = manifest[route] || [];
+  if (!inlineScripts(html).every((s) => allowed.includes(hashScript(s))))
+    stale.push(route);
+}
+if (!checked) {
   console.error("No production build found. Run `npm run build` first.");
   process.exit(1);
 }
