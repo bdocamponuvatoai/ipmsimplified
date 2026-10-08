@@ -1,36 +1,18 @@
-import { readdir, readFile, writeFile, stat } from "node:fs/promises";
-import { createHash } from "node:crypto";
+import { readFile, writeFile, stat } from "node:fs/promises";
+import { pages, inlineScripts, hashScript, readManifest } from "./csp.mjs";
 const failures = [];
-const hashes = JSON.parse(await readFile("security/csp-hashes.json", "utf8"));
+const hashes = await readManifest();
 const results = [];
-async function walk(dir) {
-  for (const e of await readdir(dir, { withFileTypes: true })) {
-    const p = `${dir}/${e.name}`;
-    if (e.isDirectory()) await walk(p);
-    else if (p.endsWith(".html")) {
-      const html = await readFile(p, "utf8");
-      const route =
-        p
-          .replace(".next/server/app", "")
-          .replace(/\.html$/, "")
-          .replace(/\/index$/, "") || "/";
-      if (route === "/_global-error") continue;
-      const scripts = [
-        ...html.matchAll(/<script\b(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/g),
-      ];
-      const allHashed = scripts.every((s) =>
-        hashes[route]?.includes(
-          "sha256-" + createHash("sha256").update(s[1]).digest("base64"),
-        ),
-      );
-      const h1 = (html.match(/<h1[ >]/g) || []).length;
-      const title = html.match(/<title>(.*?)<\/title>/)?.[1];
-      if (!allHashed || h1 !== 1 || !title) failures.push(route);
-      results.push({ route, h1, title, cspInlineScriptsCovered: allHashed });
-    }
-  }
+for await (const { route, html } of pages()) {
+  if (route === "/_global-error") continue;
+  const allHashed = inlineScripts(html).every((s) =>
+    hashes[route]?.includes(hashScript(s)),
+  );
+  const h1 = (html.match(/<h1[ >]/g) || []).length;
+  const title = html.match(/<title>(.*?)<\/title>/)?.[1];
+  if (!allHashed || h1 !== 1 || !title) failures.push(route);
+  results.push({ route, h1, title, cspInlineScriptsCovered: allHashed });
 }
-await walk(".next/server/app");
 const photos = JSON.parse(await readFile("content/photo-sizes.json", "utf8"));
 let photoBudgetPass = true;
 for (const photo of photos) {
