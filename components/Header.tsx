@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { BrandLockup } from "./brand/LogoMark";
 import { products } from "@/content/products";
@@ -35,6 +35,32 @@ export function Header() {
   function closeProductMenu() {
     productMenu.current?.removeAttribute("open");
   }
+
+  // The header persists across navigations, so close the systems panel on
+  // route change, Escape and outside clicks.
+  useEffect(() => {
+    productMenu.current?.removeAttribute("open");
+  }, [pathname]);
+
+  useEffect(() => {
+    const menu = productMenu.current;
+    if (!menu) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key !== "Escape" || !menu.open) return;
+      menu.removeAttribute("open");
+      menu.querySelector("summary")?.focus();
+    };
+    const onPointer = (event: PointerEvent) => {
+      if (menu.open && !menu.contains(event.target as Node))
+        menu.removeAttribute("open");
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointer);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointer);
+    };
+  }, []);
 
   return (
     <>
