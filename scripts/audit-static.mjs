@@ -13,6 +13,7 @@ for await (const { route, html } of pages()) {
   if (!allHashed || h1 !== 1 || !title) failures.push(route);
   results.push({ route, h1, title, cspInlineScriptsCovered: allHashed });
 }
+if (!results.some((r) => r.route === "/")) failures.push("no prerendered HTML found");
 const photos = JSON.parse(await readFile("content/photo-sizes.json", "utf8"));
 let photoBudgetPass = true;
 for (const photo of photos) {
